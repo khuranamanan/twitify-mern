@@ -149,9 +149,8 @@ function CreateEditPost({ fromModal = false }) {
       </div>
       <div className="flex flex-col gap-2 grow justify-center items-center">
         <textarea
-          className={`flex-grow py-2 px-3 focus:outline-none bg-inherit ${
-            fromModal ? "h-40" : "h-16 sm:h-24"
-          } border-none resize-none`}
+          className={`flex-grow py-2 px-3 w-full focus:outline-none bg-inherit ${fromModal ? "h-40" : "h-16 sm:h-24"
+            } border-none resize-none`}
           placeholder="What's happening?!"
           value={newPost.content}
           onChange={handleInputChange}
@@ -244,9 +243,8 @@ function CreateEditPost({ fromModal = false }) {
 
           {newPost.content.length !== 0 && (
             <div
-              className={`text-xs ${
-                isOverCharacterLimit ? "text-red-500" : ""
-              }`}
+              className={`text-xs ${isOverCharacterLimit ? "text-red-500" : ""
+                }`}
             >
               {characterCount}/{POST_CHAR_LIMIT}
             </div>
