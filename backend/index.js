@@ -1,13 +1,13 @@
-import "dotenv/config";
-import express from "express";
-import cors from "cors";
-import helmet from "helmet";
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const helmet = require("helmet");
 
-import { dbConnect } from "./db/dbConnect.js";
-import { authRouter } from "./routes/authRouter.js";
-import { usersRouter } from "./routes/usersRouter.js";
-import Post from "./models/posts.js";
-import { postsRouter } from "./routes/postsRouter.js";
+const { dbConnect } = require("./src/db/dbConnect.js");
+const { authRouter } = require("./src/routes/authRouter.js");
+const { usersRouter } = require("./src/routes/usersRouter.js");
+const Post = require("./src/models/posts.js");
+const { postsRouter } = require("./src/routes/postsRouter.js");
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -15,7 +15,7 @@ const app = express();
 dbConnect();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: "https://twitify-mern.vercel.app" }));
 app.use(helmet());
 
 app.use((req, res, next) => {
@@ -43,3 +43,5 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   console.log(`Server running on ${PORT}`);
 });
+
+module.exports = app;

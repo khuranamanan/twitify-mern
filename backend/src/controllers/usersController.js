@@ -1,6 +1,6 @@
-import Post from "../models/posts.js";
-import User from "../models/user.js";
-import bcrypt from "bcrypt";
+const Post = require("../models/posts.js");
+const bcrypt = require("bcrypt");
+const User = require("../models/user.js");
 
 /**
  * This handler handles gets all users in the db.
@@ -279,7 +279,7 @@ async function unfollowAUserHandler(req, res) {
   }
 }
 
-export {
+module.exports = {
   getAllUsers,
   getUserByUsername,
   editUserHandler,

@@ -1,6 +1,6 @@
-import express from "express";
-import authenticateToken from "../middleware/authenticateToken.js";
-import {
+const express = require("express");
+const authenticateToken = require("../middleware/authenticateToken.js");
+const {
   createPostHandler,
   deletePostHandler,
   dislikePostHandler,
@@ -9,7 +9,7 @@ import {
   getAllUserPostsHandler,
   getPostByIdHandler,
   likePostHandler,
-} from "../controllers/postsController.js";
+} = require("../controllers/postsController.js");
 const postsRouter = express.Router();
 
 postsRouter.get("/", getAllPostsHandler);
@@ -30,4 +30,4 @@ postsRouter.post("/like/:postId", authenticateToken, likePostHandler);
 
 postsRouter.post("/dislike/:postId", authenticateToken, dislikePostHandler);
 
-export { postsRouter };
+module.exports = { postsRouter };

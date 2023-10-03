@@ -1,5 +1,5 @@
-import express from "express";
-import {
+const express = require("express");
+const {
   addToBookmarkHandler,
   editUserHandler,
   followAUserHandler,
@@ -8,8 +8,8 @@ import {
   getUserByUsername,
   removeFromBookmarkHandler,
   unfollowAUserHandler,
-} from "../controllers/usersController.js";
-import authenticateToken from "../middleware/authenticateToken.js";
+} = require("../controllers/usersController.js");
+const authenticateToken = require("../middleware/authenticateToken.js");
 const usersRouter = express.Router();
 
 usersRouter.get("/", getAllUsers);
@@ -40,4 +40,4 @@ usersRouter.post(
   unfollowAUserHandler
 );
 
-export { usersRouter };
+module.exports = { usersRouter };

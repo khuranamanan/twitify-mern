@@ -1,6 +1,6 @@
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import User from "../models/user.js";
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const User = require("../models/user.js");
 
 const JWT_SECRET_KEY = process.env["JWT_SECRET_KEY"];
 
@@ -106,4 +106,4 @@ async function login(req, res) {
   }
 }
 
-export { signup, login };
+module.exports = { signup, login };

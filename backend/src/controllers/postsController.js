@@ -1,4 +1,4 @@
-import Post from "../models/posts.js";
+const Post = require("../models/posts.js");
 
 /**
  * This handler handles creating a post in the db.
@@ -287,7 +287,7 @@ async function dislikePostHandler(req, res) {
   }
 }
 
-export {
+module.exports = {
   createPostHandler,
   editPostHandler,
   deletePostHandler,
