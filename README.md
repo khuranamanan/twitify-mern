@@ -53,10 +53,6 @@ $ npm start
 - Vercel for Deployment
 - Cloudinary for Image Storage
 
-## Live Link
-
-[Twitify](https://twitify-khuranamanan.netlify.app/)
-
 ## Screenshots
 
 ![Log In Page](https://res.cloudinary.com/dsuxc3pwu/image/upload/f_auto,q_auto/v1/Twitify-Screenshots/javhbzcrzdsmotdhgttc)
