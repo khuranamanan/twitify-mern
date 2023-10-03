@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { handleLogIn } from "../../redux/slices/authSlice";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import {BeatLoader} from "react-spinners";
 
 function LoginPage() {
   useDocumentTitle("Log In | Twitify");
@@ -16,7 +17,7 @@ function LoginPage() {
   const location = useLocation();
   const [formInputError, setFormInputError] = useState();
   const [showPassword, setShowPassword] = useState();
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoggedIn, isLoading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   function handleLogInFormSubmit(event) {
@@ -104,14 +105,16 @@ function LoginPage() {
           </div>
           <div className="flex flex-col gap-4 w-full">
             <button
-              className="bg-black dark:bg-snow text-md uppercase p-2 w-full rounded-full text-snow dark:text-black font-semibold hover:bg-transparentBlack dark:hover:bg-white"
+              className="bg-black dark:bg-snow text-md uppercase p-2 w-full rounded-full text-snow dark:text-black font-semibold hover:bg-transparentBlack dark:hover:bg-white disabled:opacity-90"
               type="submit"
+              disabled={isLoading}
             >
-              Log In
+              {isLoading ? <BeatLoader color="#3fc1c9" /> :  "Log In"}
             </button>
             <button
-              className="bg-black dark:bg-snow text-md uppercase p-2 w-full rounded-full text-snow dark:text-black font-semibold hover:bg-transparentBlack dark:hover:bg-white"
+              className="bg-black dark:bg-snow text-md uppercase p-2 w-full rounded-full text-snow dark:text-black font-semibold hover:bg-transparentBlack dark:hover:bg-white disabled:opacity-90"
               type="submit"
+              disabled={isLoading}
               onClick={() =>
                 setLogInFormData({
                   username: "manankhurana",
@@ -119,7 +122,7 @@ function LoginPage() {
                 })
               }
             >
-              Log In with Test Credentials
+              {isLoading ? <BeatLoader color="#3fc1c9" /> : "Log In with Test Credentials"}
             </button>
           </div>
         </form>

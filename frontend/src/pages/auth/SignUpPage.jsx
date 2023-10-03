@@ -5,10 +5,11 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { handleSignUp } from "../../redux/slices/authSlice";
 import useDocumentTitle from "../../hooks/useDocumentTitle";
+import { BeatLoader } from "react-spinners";
 
 function SignUpPage() {
   useDocumentTitle("Sign Up | Twitify");
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoggedIn, isLoading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -211,10 +212,11 @@ function SignUpPage() {
           </div>
 
           <button
-            className="bg-black dark:bg-snow text-md uppercase p-2 w-full rounded-full text-snow dark:text-black font-semibold hover:bg-transparentBlack dark:hover:bg-white"
+            className="bg-black dark:bg-snow text-md uppercase p-2 w-full rounded-full text-snow dark:text-black font-semibold hover:bg-transparentBlack dark:hover:bg-white disabled:opacity-90"
             type="submit"
+            disabled={isLoading}
           >
-            Sign Up
+            {isLoading ? <BeatLoader color="#3fc1c9" /> : "Sign Up"}
           </button>
         </form>
 
