@@ -42,7 +42,7 @@ function HomePage() {
         (followingUser) => followingUser?.username === post?.username
       )
   );
-  console.log(homePosts);
+
   let sortedPosts;
   if (sortType === SORT_TYPES.LATEST && homePosts.length) {
     sortedPosts = [...homePosts].sort((a, b) => {
@@ -105,27 +105,24 @@ function HomePage() {
         {isSortMenuOpen && (
           <div className="bg-white dark:bg-black absolute right-16 top-6 w-32 border border-solid border-darkGray dark:border-darkerGray z-10 rounded-lg overflow-hidden text-sm">
             <div
-              className={`py-2 px-3 flex items-center gap-1 cursor-pointer hover:bg-transparentBlack2 dark:hover:bg-transparentWhite ${
-                sortType === SORT_TYPES.TRENDING ? "text-aqua" : ""
-              }`}
+              className={`py-2 px-3 flex items-center gap-1 cursor-pointer hover:bg-transparentBlack2 dark:hover:bg-transparentWhite ${sortType === SORT_TYPES.TRENDING ? "text-aqua" : ""
+                }`}
               data-value={SORT_TYPES.TRENDING}
               onClick={handleSortSelectionClick}
             >
               <TrendingIcon /> Trending
             </div>
             <div
-              className={`py-2 px-3 flex items-center gap-1 cursor-pointer hover:bg-transparentBlack2 dark:hover:bg-transparentWhite ${
-                sortType === SORT_TYPES.LATEST ? "text-aqua" : ""
-              }`}
+              className={`py-2 px-3 flex items-center gap-1 cursor-pointer hover:bg-transparentBlack2 dark:hover:bg-transparentWhite ${sortType === SORT_TYPES.LATEST ? "text-aqua" : ""
+                }`}
               data-value={SORT_TYPES.LATEST}
               onClick={handleSortSelectionClick}
             >
               <ChevronUpIcon /> Latest
             </div>
             <div
-              className={`py-2 px-3 flex items-center gap-1 cursor-pointer hover:bg-transparentBlack2 dark:hover:bg-transparentWhite ${
-                sortType === SORT_TYPES.OLDEST ? "text-aqua" : ""
-              }`}
+              className={`py-2 px-3 flex items-center gap-1 cursor-pointer hover:bg-transparentBlack2 dark:hover:bg-transparentWhite ${sortType === SORT_TYPES.OLDEST ? "text-aqua" : ""
+                }`}
               data-value={SORT_TYPES.OLDEST}
               onClick={handleSortSelectionClick}
             >
